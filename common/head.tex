@@ -1,0 +1,37 @@
+\newcommand{\lsfont}{\fontencoding{T1}\fontsize{12}{14.4}\selectfont}
+
+\def\lskopf{%
+  \unitlength1mm%
+  \vspace*{-\topmargin}%
+  \vspace*{-\headheight}%
+  \vspace*{-4cm}
+  \noindent%
+  \hspace*{-\oddsidemargin}%
+    \makebox{%
+      \hfill%
+      \begin{picture}(140,40)
+      \put(2,9){ \parbox[c]{0.15\textwidth }{\centering{
+            \includegraphics[width=1.3cm, keepaspectratio=true]{\institutelogo}
+            %a\\b\\c\\d\\e
+            }}
+            }
+
+      \put(128,9){ \parbox[c]{0.15\textwidth}{\centering{
+            \includegraphics[width=1.8cm,keepaspectratio=true]{\universitylogo}
+            %a\\b\\c\\d\\e
+            }}
+            }
+
+      \put(34,9){ \parbox[c]{0.6\textwidth}{
+            \centering{ \lsfont
+            \textsf{\universityname, \institutename}\\
+            \textsf{\branchname}\\
+            \textsf{\professor}}
+            }
+            }
+        \put(2,2){\line(1,0){151}}
+      \end{picture}%
+      \hfill}%
+      \vspace*{-0.3cm}\\
+  }
+  

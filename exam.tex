@@ -1,0 +1,47 @@
+\documentclass[12pt,a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{ifthen}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{ngerman}
+\usepackage{bibgerm}
+\usepackage{amssymb}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{calc}
+\usepackage{operatorsymbols}
+\usepackage{bbding}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{textcomp}
+\usepackage{wasysym}
+\usepackage{eurosym}
+\input{common/head.tex}
+\input{common/macros}
+\input{common/header}
+\input{common/multiplechoice}
+\lstset{language=SQL,basicstyle=\small\ttfamily,commentstyle=\textit,keywordstyle=\bfseries}
+
+% Include optional but cool packages
+\AtBeginDocument{
+  \IfFileExists{operatorsymbols.sty}{%
+    \RequirePackage{operatorsymbols}%
+  }{}%
+}
+
+% Settings used on title page
+\input{metadata}
+
+\begin{document}
+  \input{common/mantel}
+  \notloesungi{\input{common/disclaimer}}
+  
+  \input{exercises/task1}
+  \input{exercises/task2}
+  \input{exercises/task3}
+
+  \notloesungi{\input{exercises/_empty_paper}}
+  \notloesungi{\input{exercises/_empty_paper}}
+\end{document}

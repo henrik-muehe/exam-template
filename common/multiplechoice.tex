@@ -1,0 +1,21 @@
+\newenvironment{multiplechoice}{
+% before
+\begin{center}%
+\begin{tabular}{|c|c||p{0.75\textwidth}|}%
+  \hline%
+  \textbf{richtig} & \textbf{falsch} & \textbf{Aussage} \\%
+  \hline%
+  \hline%
+}{
+% after
+\end{tabular}%
+\end{center}%
+}
+
+\newcommand{\mctick}{\textcolor[rgb]{1.00,0.00,0.00}{\CheckmarkBold}}
+\newcommand{\mc}[2]{
+\ifthenelse{\equal{#1}{true}}%
+{\loesungi{\mctick} & & }%
+{& \loesungi{\mctick} & }%
+#2\\\hline
+}

@@ -1,0 +1,81 @@
+% Symbole
+\newcommand{\asymbol}{$\spadesuit$}
+\newcommand{\bsymbol}{$\clubsuit$}
+\newcommand{\absymbol}{\ifthenelse{\equal{\IsB}{1}}{\asymbol}{\bsymbol}}
+
+% Fortaufende Aufgabennummern + Punktzahl
+\newcounter{aufgabeCounter}%
+\setcounter{aufgabeCounter}{1}%
+\newcommand{\punkte}[1]{\hfill \normalsize{#1 Punkte}}%
+\newcommand{\aufgabe}[1]{\section*{Aufgabe \theaufgabeCounter \punkte{#1}} \refstepcounter{aufgabeCounter}}
+
+% Umgebung für Lösungen
+\providecommand{\IsLoesung}{0}
+\newsavebox\myloesungbox
+\newenvironment{notloesung}{%
+  \begin{lrbox}\myloesungbox
+  \begin{minipage}{0.95\linewidth}%
+}{%
+  \end{minipage}%
+  \end{lrbox}%
+    \ifthenelse{\equal{\IsLoesung}{0}}%
+    {\mbox{\usebox\myloesungbox}}%
+    {%\mbox{\phantom{\usebox\myloesungbox}}
+    }%
+  \ignorespacesafterend
+}
+\newenvironment{loesung}{%
+  \begin{lrbox}\myloesungbox
+  \begin{minipage}{0.95\linewidth}%
+    \color[rgb]{1.00,0.00,0.00}%
+}{%
+  \end{minipage}%
+  \end{lrbox}%
+    \ifthenelse{\equal{\IsLoesung}{1}}%
+    {\mbox{\usebox\myloesungbox}}%
+    {%\mbox{\phantom{\usebox\myloesungbox}}
+    }%
+  \ignorespacesafterend
+}
+\newcommand{\loesungi}[1]{%
+  \ifthenelse{\equal{\IsLoesung}{1}}%
+  {\color[rgb]{1.00,0.00,0.00}#1}%
+  {%\phantom{#1}
+  }%
+}
+\newcommand{\notloesungi}[1]{%
+  \ifthenelse{\equal{\IsLoesung}{1}}%
+  {%\phantom{#1}
+  }%
+  {#1}%
+}
+\newcommand{\angabeloesung}[2]{%
+  \ifthenelse{\equal{\IsLoesung}{0}}%
+  {#1}%
+  {#2}%
+}%
+\newcommand{\answerspace}[1]{\ifthenelse{\equal{\IsLoesung}{1}}{}{\vspace{#1}}}
+
+% Groups
+\providecommand{\IsB}{0}
+\newcommand{\ab}[2]{\ifthenelse{\equal{\IsB}{1}}{#2}{#1}}
+\newcommand{\abinline}[2]{%
+\ifthenelse{\equal{\IsLoesung}{1}}%
+{\asymbol:#2\vspace{1cm}\bsymbol:#1}%
+{\ifthenelse{\equal{\IsB}{1}}{#2}{#1}}%
+}
+
+% Left, right side
+\makeatletter
+\newcommand*{\cleartoleftpage}{%
+  \clearpage
+    \if@twoside
+    \ifodd\c@page
+      \hbox{}\newpage
+      \if@twocolumn
+        \hbox{}\newpage
+      \fi
+    \fi
+  \fi
+}
+\makeatother
